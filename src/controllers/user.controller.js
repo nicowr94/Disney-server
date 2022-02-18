@@ -39,7 +39,7 @@ export const getUsersLogs = async (req, res) => {
   const users = await User.aggregate([
     {
       $lookup: {
-        from: "logs", // collection name in db
+        from: "logs",
         localField: "email",
         foreignField: "email",
         as: "logs",
