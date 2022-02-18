@@ -12,7 +12,6 @@ export const verifyToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config.SECRET);
 
     // Validar si el id corresponde a un usuario
-    // req.userId = decoded.id; ->comentado para validar
     const user = await User.findById(decoded.id);
     // const user = await User.findById(req.userId);
     if (!user) return res.status(404).json({ message: "Not user token found" });
